@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="pt-BR" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
+    <title>Camila Nail Design — Manicure, Pedicure & Nail Art</title>
+    <meta
+      name="description"
+      content="Camila Nail Design — manicure, pedicure, unhas em gel, fibra de vidro e nail art personalizada. Agende seu horário pelo WhatsApp."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Camila Nail Design — Manicure, Pedicure & Nail Art" />
+    <meta
+      property="og:description"
+      content="Manicure, pedicure, unhas em gel, fibra de vidro e nail art personalizada. Atendimento particular, com hora marcada."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon (SVG inline) -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%85%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <!-- Tailwind CSS (CDN com config customizada) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              rose: {
+                50: "#fff5f7",
+                100: "#ffe6ec",
+                200: "#ffccd8",
+                300: "#ffa3bb",
+                400: "#ff6f95",
+                500: "#f43f74",
+                600: "#e11d5a",
+                700: "#bd1149",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              serif: ["Cormorant Garamond", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :root {
+        --rose: #f43f74;
+        --rose-soft: #ff6f95;
+        --ink: #2b2530;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--ink);
+        background-color: #ffffff;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .font-display {
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      /* ===== Fade-in ===== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: opacity, transform;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+      .reveal[data-delay="1"] {
+        transition-delay: 0.12s;
+      }
+      .reveal[data-delay="2"] {
+        transition-delay: 0.24s;
+      }
+      .reveal[data-delay="3"] {
+        transition-delay: 0.36s;
+      }
+      .reveal[data-delay="4"] {
+        transition-delay: 0.48s;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ===== Hero entrada ===== */
+      @keyframes heroIn {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .hero-in {
+        animation: heroIn 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .hero-in.d1 {
+        animation-delay: 0.15s;
+      }
+      .hero-in.d2 {
+        animation-delay: 0.3s;
+      }
+      .hero-in.d3 {
+        animation-delay: 0.45s;
+      }
+      .hero-in.d4 {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes floaty {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-14px);
+        }
+      }
+      .floaty {
+        animation: floaty 6s ease-in-out infinite;
+      }
+
+      /* ===== Navbar ===== */
+      .nav-blur {
+        backdrop-filter: saturate(180%) blur(12px);
+        -webkit-backdrop-filter: saturate(180%) blur(12px);
+        transition: background-color 0.4s ease, box-shadow 0.4s ease,
+          padding 0.4s ease;
+      }
+      .nav-scrolled {
+        background-color: rgba(255, 255, 255, 0.85);
+        box-shadow: 0 10px 30px -18px rgba(244, 63, 116, 0.45);
+      }
+      .nav-link-underline {
+        position: relative;
+      }
+      .nav-link-underline::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background: var(--rose);
+        transition: width 0.3s ease;
+      }
+      .nav-link-underline:hover::after {
+        width: 100%;
+      }
+
+      /* ===== Botões ===== */
+      .btn-rose {
+        background: var(--rose);
+        color: #fff;
+        border: none;
+        transition: transform 0.25s ease, box-shadow 0.25s ease,
+          background 0.25s ease;
+        box-shadow: 0 14px 30px -12px rgba(244, 63, 116, 0.6);
+      }
+      .btn-rose:hover {
+        background: var(--rose-soft);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 18px 38px -12px rgba(244, 63, 116, 0.7);
+      }
+      .btn-ghost {
+        border: 1.5px solid rgba(244, 63, 116, 0.35);
+        color: var(--rose);
+        background: transparent;
+        transition: all 0.25s ease;
+      }
+      .btn-ghost:hover {
+        background: var(--rose);
+        color: #fff;
+        border-color: var(--rose);
+      }
+
+      /* ===== Cards ===== */
+      .card-clean {
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.4s ease;
+      }
+      .card-clean:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px -30px rgba(244, 63, 116, 0.4);
+      }
+
+      /* ===== Galeria ===== */
+      .gallery-img {
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+          filter 0.4s ease;
+      }
+      .gallery-item:hover .gallery-img {
+        transform: scale(1.08);
+      }
+
+      ::selection {
+        background: rgba(244, 63, 116, 0.2);
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #fff;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ffccd8;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--rose-soft);
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+    </style>
+  </head>
+
+  <body class="notranslate bg-white" translate="no">
+    <!--
+      DEMO de vendas — Camila Nail Design
+      Antes de publicar/enviar pra valer, trocar:
+      - Número de WhatsApp (todas as ocorrências de 5500000000000)
+      - Telefone e e-mail do rodapé
+      - Link do Instagram (está como "#")
+      - Números de atendimentos/avaliação (hero e planos) pelos reais da Camila
+    -->
+
+    <!-- ===================== NAVBAR ===================== -->
+    <header
+      id="navbar"
+      class="nav-blur fixed top-0 inset-x-0 z-50 py-4"
+    >
+      <nav class="container mx-auto px-5 flex items-center justify-between">
+        <a href="#hero" class="flex items-center gap-2 group">
+          <span
+            class="grid place-items-center w-10 h-10 rounded-2xl bg-rose-500 text-white text-lg shadow-lg shadow-rose-200 transition-transform group-hover:rotate-6"
+            >C</span
+          >
+          <span class="font-display text-2xl font-700 tracking-tight">
+            Camila<span class="text-rose-500"> Nail Design</span>
+          </span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-9 text-[15px] font-medium text-gray-600">
+          <a href="#sobre" class="nav-link-underline hover:text-rose-500 transition">Sobre</a>
+          <a href="#servicos" class="nav-link-underline hover:text-rose-500 transition">Serviços</a>
+          <a href="#galeria" class="nav-link-underline hover:text-rose-500 transition">Galeria</a>
+          <a href="#planos" class="nav-link-underline hover:text-rose-500 transition">Planos</a>
+          <a href="#depoimentos" class="nav-link-underline hover:text-rose-500 transition">Depoimentos</a>
+        </div>
+
+        <a
+          href="#agendar"
+          class="btn-rose hidden sm:inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold"
+        >
+          Agendar agora
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </a>
+
+        <!-- Mobile toggle -->
+        <button
+          id="menuToggle"
+          class="lg:hidden grid place-items-center w-11 h-11 rounded-xl border border-rose-100 text-rose-500"
+          aria-label="Abrir menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </nav>
+
+      <!-- Mobile menu -->
+      <div
+        id="mobileMenu"
+        class="lg:hidden hidden mx-4 mt-3 rounded-2xl glass-card border border-rose-50 shadow-xl overflow-hidden"
+      >
+        <div class="flex flex-col p-3 text-gray-700 font-medium">
+          <a href="#sobre" class="px-4 py-3 rounded-xl hover:bg-rose-50 hover:text-rose-500 transition">Sobre</a>
+          <a href="#servicos" class="px-4 py-3 rounded-xl hover:bg-rose-50 hover:text-rose-500 transition">Serviços</a>
+          <a href="#galeria" class="px-4 py-3 rounded-xl hover:bg-rose-50 hover:text-rose-500 transition">Galeria</a>
+          <a href="#planos" class="px-4 py-3 rounded-xl hover:bg-rose-50 hover:text-rose-500 transition">Planos</a>
+          <a href="#depoimentos" class="px-4 py-3 rounded-xl hover:bg-rose-50 hover:text-rose-500 transition">Depoimentos</a>
+          <a href="#agendar" class="btn-rose text-center mt-2 rounded-xl px-4 py-3 font-semibold">Agendar agora</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" class="relative overflow-hidden pt-32 pb-20 lg:pt-44 lg:pb-28">
+      <!-- soft background blobs -->
+      <div class="pointer-events-none absolute -top-24 -right-24 w-[28rem] h-[28rem] rounded-full bg-rose-100 blur-3xl opacity-60"></div>
+      <div class="pointer-events-none absolute top-1/2 -left-32 w-96 h-96 rounded-full bg-rose-50 blur-3xl opacity-80"></div>
+
+      <div class="container mx-auto px-5">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          <!-- Texto -->
+          <div class="text-center lg:text-left">
+            <span class="hero-in d1 inline-flex items-center gap-2 rounded-full bg-rose-50 text-rose-600 px-4 py-1.5 text-sm font-medium mb-6">
+              <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+              Nail design com carinho e capricho
+            </span>
+
+            <h1 class="hero-in d2 font-display text-5xl sm:text-6xl lg:text-7xl font-700 leading-[1.05] tracking-tight mb-6">
+              Unhas impecáveis, <br class="hidden sm:block" />
+              <span class="text-rose-500">do seu jeitinho</span>
+            </h1>
+
+            <p class="hero-in d3 text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 mb-9 leading-relaxed">
+              Manicure, pedicure, unhas em gel, fibra de vidro e nail art
+              personalizada. Atendimento particular, com hora marcada e todo
+              o cuidado que suas mãos merecem.
+            </p>
+
+            <div class="hero-in d4 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+              <a href="#agendar" class="btn-rose w-full sm:w-auto rounded-full px-8 py-3.5 font-semibold text-base">
+                Agendar meu horário
+              </a>
+              <a href="#servicos" class="btn-ghost w-full sm:w-auto rounded-full px-8 py-3.5 font-semibold text-base">
+                Ver serviços
+              </a>
+            </div>
+
+            <!-- mini stats -->
+            <div class="hero-in d4 flex items-center gap-8 justify-center lg:justify-start mt-12">
+              <div>
+                <p class="font-display text-3xl font-700 text-rose-500">+300</p>
+                <p class="text-sm text-gray-400">Atendimentos</p>
+              </div>
+              <div class="w-px h-10 bg-gray-200"></div>
+              <div>
+                <p class="font-display text-3xl font-700 text-rose-500">100%</p>
+                <p class="text-sm text-gray-400">Hora marcada</p>
+              </div>
+              <div class="w-px h-10 bg-gray-200"></div>
+              <div>
+                <p class="font-display text-3xl font-700 text-rose-500">4.9★</p>
+                <p class="text-sm text-gray-400">Avaliação média</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imagem -->
+          <div class="hero-in d3 relative">
+            <div class="relative mx-auto max-w-md lg:max-w-none">
+              <div class="absolute inset-0 -rotate-6 rounded-[2.5rem] bg-rose-100/70"></div>
+              <img
+                src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=80"
+                alt="Manicure profissional feita por Camila Nail Design"
+                loading="eager"
+                class="relative rounded-[2.5rem] object-cover w-full h-[420px] lg:h-[540px] shadow-2xl shadow-rose-200"
+              />
+              <!-- floating card -->
+              <div class="floaty glass-card absolute -bottom-6 -left-4 sm:left-6 rounded-2xl p-4 shadow-xl border border-white/60 flex items-center gap-3">
+                <span class="grid place-items-center w-11 h-11 rounded-xl bg-rose-500 text-white text-xl">💅</span>
+                <div>
+                  <p class="text-sm font-semibold text-gray-800">Atendimento particular</p>
+                  <p class="text-xs text-gray-400">Ambiente reservado e higienizado</p>
+                </div>
+              </div>
+              <div class="floaty glass-card absolute -top-5 -right-3 sm:right-4 rounded-2xl px-4 py-3 shadow-xl border border-white/60" style="animation-delay:-3s">
+                <p class="text-xs text-gray-400">Agende em</p>
+                <p class="text-sm font-semibold text-rose-500">30 segundos ⏱️</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SELOS ===================== -->
+    <section class="border-y border-rose-50 bg-rose-50/30">
+      <div class="container mx-auto px-5 py-7">
+        <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 text-gray-400 text-sm font-medium reveal">
+          <span class="flex items-center gap-2"><span class="text-rose-400">💅</span> Materiais de alta qualidade</span>
+          <span class="flex items-center gap-2"><span class="text-rose-400">💅</span> Atendimento pontual e reservado</span>
+          <span class="flex items-center gap-2"><span class="text-rose-400">💅</span> Nail art personalizada</span>
+          <span class="flex items-center gap-2"><span class="text-rose-400">💅</span> Instrumentos higienizados</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SOBRE ===================== -->
+    <section id="sobre" class="py-24 lg:py-32">
+      <div class="container mx-auto px-5">
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+          <div class="relative reveal">
+            <div class="grid grid-cols-2 gap-4">
+              <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=600&q=80" alt="Cuidado com as mãos" class="rounded-3xl object-cover h-64 w-full shadow-lg" loading="lazy" />
+              <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=600&q=80" alt="Nail art detalhada" class="rounded-3xl object-cover h-64 w-full shadow-lg mt-8" loading="lazy" />
+            </div>
+            <div class="floaty glass-card absolute -bottom-6 right-6 rounded-2xl px-5 py-4 shadow-xl border border-white/60 flex items-center gap-3">
+              <span class="grid place-items-center w-11 h-11 rounded-xl bg-rose-500 text-white text-xl">💅</span>
+              <div class="text-left">
+                <p class="text-sm font-semibold text-gray-800">Instrumentos</p>
+                <p class="text-xs text-gray-400">sempre esterilizados</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal" data-delay="1">
+            <span class="text-rose-500 font-semibold tracking-wide uppercase text-sm">Sobre a Camila Nail Design</span>
+            <h2 class="font-display text-4xl lg:text-5xl font-700 mt-3 mb-6 leading-tight">
+              Cuidado de verdade em cada detalhe das suas unhas
+            </h2>
+            <p class="text-gray-500 text-lg leading-relaxed mb-5">
+              Atendimento particular e no seu tempo, pensado para você
+              relaxar enquanto cuida de você. Aqui, cada unha é feita com
+              atenção aos detalhes, técnica e materiais de qualidade.
+            </p>
+            <ul class="space-y-4 mb-9">
+              <li class="flex items-start gap-3">
+                <span class="mt-1 grid place-items-center w-6 h-6 rounded-full bg-rose-100 text-rose-500 text-xs">✓</span>
+                <span class="text-gray-600">Instrumentos esterilizados a cada atendimento</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 grid place-items-center w-6 h-6 rounded-full bg-rose-100 text-rose-500 text-xs">✓</span>
+                <span class="text-gray-600">Esmaltes e géis de marcas de qualidade</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 grid place-items-center w-6 h-6 rounded-full bg-rose-100 text-rose-500 text-xs">✓</span>
+                <span class="text-gray-600">Nail art personalizada do jeito que você quiser</span>
+              </li>
+            </ul>
+            <a href="#agendar" class="btn-rose inline-flex rounded-full px-7 py-3 font-semibold">Agendar meu horário</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SERVIÇOS ===================== -->
+    <section id="servicos" class="py-24 lg:py-32 bg-rose-50/40">
+      <div class="container mx-auto px-5">
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+          <span class="text-rose-500 font-semibold tracking-wide uppercase text-sm">Nossos serviços</span>
+          <h2 class="font-display text-4xl lg:text-5xl font-700 mt-3 mb-4 leading-tight">
+            Tudo para suas unhas ficarem incríveis
+          </h2>
+          <p class="text-gray-500 text-lg">
+            Escolha o cuidado perfeito para o seu momento. Qualidade e
+            carinho em cada detalhe.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          <!-- Card -->
+          <article class="card-clean reveal bg-white rounded-3xl overflow-hidden shadow-sm border border-rose-50">
+            <div class="overflow-hidden h-52">
+              <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=700&q=80" alt="Manicure tradicional" class="gallery-img w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="p-7">
+              <h3 class="font-display text-2xl font-700 mb-2">Manicure Tradicional</h3>
+              <p class="text-gray-500 text-sm leading-relaxed mb-5">Cutilagem cuidadosa e esmaltação impecável para mãos sempre em dia.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-rose-500 font-semibold">a partir de R$ 35</span>
+                <a href="#agendar" class="text-sm font-semibold text-gray-400 hover:text-rose-500 transition">Agendar →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card-clean reveal" data-delay="1">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-rose-50 h-full">
+              <div class="overflow-hidden h-52">
+                <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=700&q=80" alt="Pedicure spa" class="gallery-img w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="p-7">
+                <h3 class="font-display text-2xl font-700 mb-2">Pedicure Spa</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">Esfoliação, hidratação e esmaltação para pés renovados e relaxados.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-rose-500 font-semibold">a partir de R$ 40</span>
+                  <a href="#agendar" class="text-sm font-semibold text-gray-400 hover:text-rose-500 transition">Agendar →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card-clean reveal" data-delay="2">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-rose-50 h-full">
+              <div class="overflow-hidden h-52">
+                <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=700&q=80" alt="Unhas em gel" class="gallery-img w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="p-7">
+                <h3 class="font-display text-2xl font-700 mb-2">Unhas em Gel</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">Alongamento resistente com acabamento natural e brilho duradouro.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-rose-500 font-semibold">a partir de R$ 90</span>
+                  <a href="#agendar" class="text-sm font-semibold text-gray-400 hover:text-rose-500 transition">Agendar →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card-clean reveal">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-rose-50 h-full">
+              <div class="overflow-hidden h-52">
+                <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=700&q=80" alt="Unhas em fibra de vidro" class="gallery-img w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="p-7">
+                <h3 class="font-display text-2xl font-700 mb-2">Fibra de Vidro</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">Leve, resistente e com aspecto ainda mais natural para o dia a dia.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-rose-500 font-semibold">a partir de R$ 110</span>
+                  <a href="#agendar" class="text-sm font-semibold text-gray-400 hover:text-rose-500 transition">Agendar →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card-clean reveal" data-delay="1">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-rose-50 h-full">
+              <div class="overflow-hidden h-52">
+                <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&w=700&q=80" alt="Nail art e decoração" class="gallery-img w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="p-7">
+                <h3 class="font-display text-2xl font-700 mb-2">Nail Art & Decoração</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">Desenhos, pedrarias e efeitos personalizados do jeito que você imaginar.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-rose-500 font-semibold">a partir de R$ 20/unha</span>
+                  <a href="#agendar" class="text-sm font-semibold text-gray-400 hover:text-rose-500 transition">Agendar →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card-clean reveal" data-delay="2">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-rose-50 h-full">
+              <div class="overflow-hidden h-52">
+                <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=700&q=80" alt="Esmaltação em gel" class="gallery-img w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="p-7">
+                <h3 class="font-display text-2xl font-700 mb-2">Esmaltação em Gel</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">Semipermanente, com brilho e durabilidade de até 3 semanas.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-rose-500 font-semibold">a partir de R$ 60</span>
+                  <a href="#agendar" class="text-sm font-semibold text-gray-400 hover:text-rose-500 transition">Agendar →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GALERIA ===================== -->
+    <section id="galeria" class="py-24 lg:py-32">
+      <div class="container mx-auto px-5">
+        <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+          <span class="text-rose-500 font-semibold tracking-wide uppercase text-sm">Galeria</span>
+          <h2 class="font-display text-4xl lg:text-5xl font-700 mt-3 mb-4 leading-tight">Trabalhos que falam por si</h2>
+          <p class="text-gray-500 text-lg">Um pouquinho do carinho e do capricho que colocamos em cada cliente.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div class="gallery-item reveal overflow-hidden rounded-2xl row-span-2">
+            <img src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?auto=format&fit=crop&w=600&q=80" alt="Detalhe de unhas" class="gallery-img w-full h-full object-cover min-h-[260px]" loading="lazy" />
+          </div>
+          <div class="gallery-item reveal overflow-hidden rounded-2xl" data-delay="1">
+            <img src="https://images.unsplash.com/photo-1604902396830-aca29e19b067?auto=format&fit=crop&w=500&q=80" alt="Esmaltação" class="gallery-img w-full h-44 object-cover" loading="lazy" />
+          </div>
+          <div class="gallery-item reveal overflow-hidden rounded-2xl" data-delay="2">
+            <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=500&q=80" alt="Trabalho de unhas" class="gallery-img w-full h-44 object-cover" loading="lazy" />
+          </div>
+          <div class="gallery-item reveal overflow-hidden rounded-2xl row-span-2" data-delay="1">
+            <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=600&q=80" alt="Nail art" class="gallery-img w-full h-full object-cover min-h-[260px]" loading="lazy" />
+          </div>
+          <div class="gallery-item reveal overflow-hidden rounded-2xl" data-delay="2">
+            <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=500&q=80" alt="Unhas em gel" class="gallery-img w-full h-44 object-cover" loading="lazy" />
+          </div>
+          <div class="gallery-item reveal overflow-hidden rounded-2xl" data-delay="3">
+            <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=500&q=80" alt="Unhas coloridas" class="gallery-img w-full h-44 object-cover" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PLANOS ===================== -->
+    <section id="planos" class="py-24 lg:py-32 bg-rose-50/40">
+      <div class="container mx-auto px-5">
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+          <span class="text-rose-500 font-semibold tracking-wide uppercase text-sm">Planos</span>
+          <h2 class="font-display text-4xl lg:text-5xl font-700 mt-3 mb-4 leading-tight">Pacotes de manutenção</h2>
+          <p class="text-gray-500 text-lg">Cuide das suas unhas com frequência e economize. Cancele quando quiser.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-7 max-w-5xl mx-auto items-stretch">
+          <!-- Básico -->
+          <div class="card-clean reveal bg-white rounded-3xl p-8 border border-rose-50 shadow-sm flex flex-col">
+            <h3 class="font-display text-2xl font-700">Essencial</h3>
+            <p class="text-gray-400 text-sm mt-1 mb-6">Para manter as unhas sempre em dia</p>
+            <p class="mb-6"><span class="font-display text-5xl font-700">R$ 89</span><span class="text-gray-400">/mês</span></p>
+            <ul class="space-y-3 text-sm text-gray-600 mb-8 flex-1">
+              <li class="flex gap-3"><span class="text-rose-500">✓</span> 2 esmaltações em gel por mês</li>
+              <li class="flex gap-3"><span class="text-rose-500">✓</span> Agendamento prioritário</li>
+              <li class="flex gap-3"><span class="text-rose-500">✓</span> 10% off em nail art</li>
+            </ul>
+            <a href="#agendar" class="btn-ghost text-center rounded-full px-6 py-3 font-semibold">Escolher plano</a>
+          </div>
+
+          <!-- Popular -->
+          <div class="card-clean reveal relative bg-white rounded-3xl p-8 border-2 border-rose-300 shadow-xl shadow-rose-100 flex flex-col" data-delay="1">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-rose-500 text-white text-xs font-semibold px-4 py-1 rounded-full shadow-lg">MAIS POPULAR</span>
+            <h3 class="font-display text-2xl font-700">Fidelidade</h3>
+            <p class="text-gray-400 text-sm mt-1 mb-6">O queridinho das clientes</p>
+            <p class="mb-6"><span class="font-display text-5xl font-700 text-rose-500">R$ 159</span><span class="text-gray-400">/mês</span></p>
+            <ul class="space-y-3 text-sm text-gray-600 mb-8 flex-1">
+              <li class="flex gap-3"><span class="text-rose-500">✓</span> Manicure quinzenal</li>
+              <li class="flex gap-3"><span class="text-rose-500">✓</span> Pedicure mensal</li>
+              <li class="flex gap-3"><span class="text-rose-500">✓</span> 1 nail art incluída</li>
+              <li class="flex gap-3"><span class="text-rose-500">✓</span> 15% off em serviços extras</li>
+            </ul>
+            <a href="#agendar" class="btn-rose text-center rounded-full px-6 py-3 font-semibold">Escolher plano</a>
+          </div>
+
+          <!-- Luxo -->
+          <div class="card-clean reveal bg-white rounded-3xl p-8 border border-rose-50 shadow-sm flex flex-col" data-delay="2">
+            <h3 class="font-display text-2xl font-700">Completo</h3>
+            <p class="text-gray-400 text-sm mt-1 mb-6">Experiência completa</p>
+            <p class="mb-6"><span class="font-display text-5xl font-700">R$ 219</span><span class="text-gray-400">/mês</span></p>
+            <ul class="space-y-3 text-sm text-gray-600 mb-8 flex-1">
+              <li class="flex gap-3"><span class="text-rose-500">✓</span> Unhas em gel mensal</li>
+              <li class="flex gap-3"><span class="text-rose-500">✓</span> Manicure quinzenal</li>
+              <li class="flex gap-3"><span class="text-rose-500">✓</span> Nail art incluída sempre</li>
+              <li class="flex gap-3"><span class="text-rose-500">✓</span> 20% off em todos os extras</li>
+            </ul>
+            <a href="#agendar" class="btn-ghost text-center rounded-full px-6 py-3 font-semibold">Escolher plano</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DEPOIMENTOS ===================== -->
+    <section id="depoimentos" class="py-24 lg:py-32">
+      <div class="container mx-auto px-5">
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+          <span class="text-rose-500 font-semibold tracking-wide uppercase text-sm">Depoimentos</span>
+          <h2 class="font-display text-4xl lg:text-5xl font-700 mt-3 mb-4 leading-tight">O que as clientes dizem</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-7">
+          <figure class="reveal bg-white rounded-3xl p-8 border border-rose-50 shadow-sm">
+            <div class="text-rose-300 text-2xl mb-3">★★★★★</div>
+            <blockquote class="text-gray-600 leading-relaxed mb-6">"Minhas unhas nunca duraram tanto! A Camila é super cuidadosa com cada detalhe."</blockquote>
+            <figcaption class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Cliente Larissa" class="w-12 h-12 rounded-full object-cover" loading="lazy" />
+              <div>
+                <p class="font-semibold text-gray-800">Larissa Souza</p>
+                <p class="text-sm text-gray-400">Cliente há 1 ano</p>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="reveal bg-white rounded-3xl p-8 border border-rose-50 shadow-sm" data-delay="1">
+            <div class="text-rose-300 text-2xl mb-3">★★★★★</div>
+            <blockquote class="text-gray-600 leading-relaxed mb-6">"O plano Fidelidade vale muito a pena, sempre saio com as unhas impecáveis."</blockquote>
+            <figcaption class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&q=80" alt="Cliente Bianca" class="w-12 h-12 rounded-full object-cover" loading="lazy" />
+              <div>
+                <p class="font-semibold text-gray-800">Bianca Ferreira</p>
+                <p class="text-sm text-gray-400">Cliente há 8 meses</p>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="reveal bg-white rounded-3xl p-8 border border-rose-50 shadow-sm" data-delay="2">
+            <div class="text-rose-300 text-2xl mb-3">★★★★★</div>
+            <blockquote class="text-gray-600 leading-relaxed mb-6">"Atendimento particular, pontual e um capricho danado no nail art. Recomendo demais!"</blockquote>
+            <figcaption class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Cliente Débora" class="w-12 h-12 rounded-full object-cover" loading="lazy" />
+              <div>
+                <p class="font-semibold text-gray-800">Débora Ramos</p>
+                <p class="text-sm text-gray-400">Cliente há 6 meses</p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA / AGENDAR ===================== -->
+    <section id="agendar" class="py-24 lg:py-28">
+      <div class="container mx-auto px-5">
+        <div class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-rose-500 to-rose-400 px-8 py-16 lg:px-16 lg:py-20 text-center shadow-2xl shadow-rose-200 reveal">
+          <div class="pointer-events-none absolute -top-16 -right-16 w-72 h-72 rounded-full bg-white/10"></div>
+          <div class="pointer-events-none absolute -bottom-20 -left-12 w-72 h-72 rounded-full bg-white/10"></div>
+
+          <div class="relative max-w-2xl mx-auto text-white">
+            <h2 class="font-display text-4xl lg:text-5xl font-700 mb-5 leading-tight">Pronta para unhas impecáveis?</h2>
+            <p class="text-white/85 text-lg mb-9">Agende seu horário em poucos cliques. Escolha o serviço, o melhor dia e deixe as suas unhas comigo.</p>
+
+            <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="return false;">
+              <input type="text" placeholder="Seu nome" class="flex-1 rounded-full px-6 py-3.5 text-gray-700 outline-none focus:ring-2 focus:ring-white/70" />
+              <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="bg-white text-rose-600 font-semibold rounded-full px-8 py-3.5 hover:bg-rose-50 transition shadow-lg whitespace-nowrap">
+                Agendar no WhatsApp
+              </a>
+            </form>
+
+            <p class="text-white/70 text-sm mt-5">📍 Endereço enviado após a confirmação · ⏰ Seg a Sáb, 9h às 19h</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="border-t border-rose-50 pt-16 pb-8">
+      <div class="container mx-auto px-5">
+        <div class="grid md:grid-cols-4 gap-10 mb-12">
+          <div class="md:col-span-1">
+            <a href="#hero" class="flex items-center gap-2 mb-4">
+              <span class="grid place-items-center w-10 h-10 rounded-2xl bg-rose-500 text-white text-lg">C</span>
+              <span class="font-display text-2xl font-700">Camila<span class="text-rose-500"> Nail Design</span></span>
+            </a>
+            <p class="text-gray-400 text-sm leading-relaxed">Unhas cuidadas com carinho, capricho e atenção a cada detalhe.</p>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-4">Navegação</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#sobre" class="hover:text-rose-500 transition">Sobre</a></li>
+              <li><a href="#servicos" class="hover:text-rose-500 transition">Serviços</a></li>
+              <li><a href="#galeria" class="hover:text-rose-500 transition">Galeria</a></li>
+              <li><a href="#planos" class="hover:text-rose-500 transition">Planos</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-4">Contato</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>📍 Atendimento particular (endereço combinado após agendamento)</li>
+              <li>📞 (00) 00000-0000</li>
+              <li>✉️ camila.naildesign@gmail.com</li>
+              <li>⏰ Seg a Sáb · 9h às 19h</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-4">Siga-nos</h4>
+            <div class="flex gap-3">
+              <a href="#" aria-label="Instagram" class="grid place-items-center w-10 h-10 rounded-full bg-rose-50 text-rose-500 hover:bg-rose-500 hover:text-white transition">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.17.4.37 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.17-1 .37-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-.9.04-1.4.2-1.7.3-.4.17-.7.36-1 .66-.3.3-.5.6-.66 1-.1.3-.26.8-.3 1.7C3.3 8.5 3.3 8.9 3.3 12s0 3.5.07 4.7c.04.9.2 1.4.3 1.7.17.4.36.7.66 1 .3.3.6.5 1 .66.3.1.8.26 1.7.3 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c.9-.04 1.4-.2 1.7-.3.4-.17.7-.36 1-.66.3-.3.5-.6.66-1 .1-.3.26-.8.3-1.7.07-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.04-.9-.2-1.4-.3-1.7a2.7 2.7 0 0 0-.66-1c-.3-.3-.6-.5-1-.66-.3-.1-.8-.26-1.7-.3C15.5 4 15.1 4 12 4zm0 3.06A4.94 4.94 0 1 1 12 17a4.94 4.94 0 0 1 0-9.88zm0 8.15A3.2 3.2 0 1 0 12 8.8a3.2 3.2 0 0 0 0 6.4zm6.3-8.35a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
+              </a>
+              <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="WhatsApp" class="grid place-items-center w-10 h-10 rounded-full bg-rose-50 text-rose-500 hover:bg-rose-500 hover:text-white transition">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.06 24l1.7-6.2A11.9 11.9 0 0 1 12 0a11.9 11.9 0 0 1 8.4 20.3A11.9 11.9 0 0 1 6.3 22.3L.06 24zM6.6 20l.4.2a9.9 9.9 0 0 0 5 1.4 9.9 9.9 0 1 0-9.9-9.9c0 1.8.5 3.6 1.4 5.1l.3.4-1 3.7 3.8-.9zM18 14.3c-.1-.1-.4-.2-.8-.4-.4-.2-2.2-1.1-2.6-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7c.2-.2.2-.4.4-.6.1-.2 0-.5 0-.7 0-.2-.8-1.9-1-2.6-.3-.7-.5-.6-.8-.6h-.6c-.2 0-.6.1-.9.5-.3.4-1.2 1.2-1.2 2.9 0 1.7 1.2 3.3 1.4 3.6.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 2.2-.9 2.5-1.7.3-.8.3-1.5.2-1.7z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-rose-50 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-400">
+          <p>© <span id="year"></span> Camila Nail Design. Todos os direitos reservados.</p>
+          <p>Feito com <span class="text-rose-500">♥</span> para deixar suas unhas ainda mais lindas.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Botão flutuante WhatsApp -->
+    <a
+      href="https://wa.me/5500000000000"
+      target="_blank"
+      rel="noopener"
+      aria-label="Falar no WhatsApp"
+      class="fixed bottom-6 right-6 z-50 grid place-items-center w-14 h-14 rounded-full bg-rose-500 text-white shadow-2xl shadow-rose-300 hover:scale-110 transition-transform"
+    >
+      <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M.06 24l1.7-6.2A11.9 11.9 0 0 1 12 0a11.9 11.9 0 0 1 8.4 20.3A11.9 11.9 0 0 1 6.3 22.3L.06 24zM6.6 20l.4.2a9.9 9.9 0 0 0 5 1.4 9.9 9.9 0 1 0-9.9-9.9c0 1.8.5 3.6 1.4 5.1l.3.4-1 3.7 3.8-.9zM18 14.3c-.1-.1-.4-.2-.8-.4-.4-.2-2.2-1.1-2.6-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7c.2-.2.2-.4.4-.6.1-.2 0-.5 0-.7 0-.2-.8-1.9-1-2.6-.3-.7-.5-.6-.8-.6h-.6c-.2 0-.6.1-.9.5-.3.4-1.2 1.2-1.2 2.9 0 1.7 1.2 3.3 1.4 3.6.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 2.2-.9 2.5-1.7.3-.8.3-1.5.2-1.7z"/></svg>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // Ano dinâmico no rodapé
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Navbar muda ao rolar
+      const navbar = document.getElementById("navbar");
+      const onScroll = () => {
+        if (window.scrollY > 24) {
+          navbar.classList.add("nav-scrolled", "py-3");
+          navbar.classList.remove("py-4");
+        } else {
+          navbar.classList.remove("nav-scrolled", "py-3");
+          navbar.classList.add("py-4");
+        }
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      // Menu mobile
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuToggle.addEventListener("click", () =>
+        mobileMenu.classList.toggle("hidden")
+      );
+      mobileMenu.querySelectorAll("a").forEach((link) =>
+        link.addEventListener("click", () => mobileMenu.classList.add("hidden"))
+      );
+
+      // Fade-in com IntersectionObserver
+      const reveals = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      );
+      reveals.forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
